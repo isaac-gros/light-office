@@ -1,15 +1,9 @@
 <?php
 
-try {
-
-	$database = new PDO (
-        'mysql:host=' . constant('DB_HOST') . ';dbname=' . constant('DB_NAME'),
-        constant('DB_USER'),
-        constant('DB_PASSWORD')
-    );
-
-} catch (PDOException $e) {
-	print_r($e);
-}
+$database = new PDO (
+    'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME,
+    DB_USER,
+    DB_PASSWORD
+);
 
 ?>

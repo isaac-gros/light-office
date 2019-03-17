@@ -1,11 +1,3 @@
-<form name="database" method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
- 	<input type="text" placeholder="Hôte" name="db_host">
- 	<input type="text" placeholder="Nom de la base de données" name="db_name">
- 	<input type="text" placeholder="Nom d'utilisateur" name="db_user">
- 	<input type="password" placeholder="Mot de passe" name="db_password">
- 	<input type="submit" name="submit" value="Test">
- </form>
-
 <?php
 
 	$status = array(
@@ -36,7 +28,7 @@
 
 		    $create_dbfile = fopen(__DIR__ . '/define-database.php', 'w+');
 
-		    if(file_exists('define-database.php') && is_writable('define-database.php')) {
+		    if(file_exists('define-database.php')) {
 		    	fwrite($create_dbfile, "<?php\n");
 			    fwrite($create_dbfile, "\tdefine('DB_HOST', '$db_host');\n");
 			    fwrite($create_dbfile, "\tdefine('DB_NAME', '$db_name');\n");
@@ -45,6 +37,8 @@
 			    fwrite($create_dbfile, "?>");
 		    }
 
+            $root = "http://light-office.test";
+		    header("Location: " . $root);
 
 		} catch (PDOException $e) {
 		    $status['connected'] = false;
